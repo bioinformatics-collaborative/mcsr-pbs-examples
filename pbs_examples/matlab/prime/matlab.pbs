@@ -1,0 +1,10 @@
+#!/bin/bash
+#PBS -N prime-matlab
+#PBS -m abe
+#PBS -M bnpharr@olemiss.edu
+#PBS -l ncpus=4
+#PBS -l mem=5gb
+
+cd $PBS_O_WORKDIR
+/usr/local/apps/bin/matlab -nodisplay < prime.m
+

@@ -1,0 +1,29 @@
+#!/bin/sh
+#
+#PBS -N J6mp2_opt
+#PBS -S /bin/csh
+#PBS -j oe
+#PBS -W umask=022
+#PBS -m be
+#PBS -o mp2_opt.log
+#PBS -l cput=10:00:00
+#PBS -l mem=1600mb
+#PBS -l nodes=1:ppn=4
+#PBS -l file=100gb
+
+
+export g09root=/usr/local/apps/ 
+. $g09root/g09/bsd/g09.profile 
+
+scrdir=/tmp/$PBS_JOBID
+
+mkdir -p $scrdir
+export GAUSS_SCRDIR=$scrdir
+export OMP_NUM_THREADS=1
+
+printf 'exec_host = '
+head -n 1 $PBS_NODEFILE
+
+cd $PBS_O_WORKDIR
+/usr/local/apps/bin/g09setup mp2_opt.com mp2_opt.out
+

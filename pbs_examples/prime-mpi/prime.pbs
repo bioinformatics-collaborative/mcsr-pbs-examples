@@ -1,0 +1,11 @@
+#!/bin/bash
+#PBS -N prime_mpi
+#PBS -m abe
+#PBS -M bnpharr@olemiss.edu
+#PBS -l select=5:ncpus=1:mem=100mb -l place=free
+
+module load intel
+module load mpt
+
+cd ${PBS_O_WORKDIR}
+time mpiexec ./prime_mpi

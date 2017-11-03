@@ -1,0 +1,8 @@
+#!/bin/bash
+#PBS -N prime_single
+#PBS -m abe
+#PBS -M bnpharr@olemiss.edu
+#PBS -l mem=1GB
+
+cd $PBS_O_WORKDIR
+./prime.py
